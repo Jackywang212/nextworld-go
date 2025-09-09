@@ -1,74 +1,246 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXTWORLD</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEXTWORLD | 化粧品OEM / 共同開発</title>
+  <meta name="description" content="NEXTWORLDは国内外のパートナー企業と共に、化粧品・健康食品のOEM/ODM、商品企画、原料開発、物流まで一気通貫で支援します。">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-      text-align: center;
+    :root{
+      --bg:#0b1020;
+      --card:#111831;
+      --text:#e9eefc;
+      --muted:#a9b4d0;
+      --brand:#5da8ff;
+      --brand2:#7ef3d5;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --radius:22px;
     }
-    header {
-      background: #4a90e2;
-      color: #fff;
-      padding: 20px 0;
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif,system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Meiryo", Arial;
+      color:var(--text); background: radial-gradient(1200px 600px at 10% 0%, #14204a 0%, #0b1020 55%) fixed;
+      line-height:1.6;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
+    a{color:var(--brand); text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    /* ---------- Hero ---------- */
+    .hero{
+      position:relative; overflow:hidden; padding:86px 0 64px; text-align:center;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
+    .hero::before{
+      content:""; position:absolute; inset:-30% -10% auto -10%; height:120%;
+      background: conic-gradient(from 120deg at 50% 50%, rgba(93,168,255,.25), rgba(126,243,213,.18), rgba(93,168,255,.25));
+      filter: blur(90px); animation: swirl 18s linear infinite;
     }
-    footer {
-      background: #222;
-      color: #fff;
-      padding: 15px;
-      font-size: 0.9em;
+    @keyframes swirl {to{transform: rotate(360deg)}}
+    .badge{
+      display:inline-block; padding:6px 12px; border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06); border-radius:999px; font-size:12px; letter-spacing:.08em; color:var(--muted)
     }
-    a {
-      color: #4a90e2;
-      text-decoration: none;
+    h1{margin:14px 0 8px; font-size:40px; letter-spacing:.02em}
+    .lead{margin:0 auto 24px; max-width:760px; color:var(--muted)}
+    .cta{display:flex; gap:14px; justify-content:center; margin-top:20px}
+    .btn{
+      padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg, rgba(93,168,255,.22), rgba(126,243,213,.14));
+      color:#fff; box-shadow:var(--shadow); transition:transform .2s ease, filter .2s ease;
+      backdrop-filter: blur(8px);
     }
-    a:hover {
-      text-decoration: underline;
+    .btn:hover{transform: translateY(-2px); filter: brightness(1.05)}
+    /* ---------- Sections ---------- */
+    section{padding:56px 0}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10); border-radius: var(--radius); box-shadow: var(--shadow);
     }
+    .grid{display:grid; gap:20px}
+    @media(min-width:900px){ .grid-3{grid-template-columns: repeat(3,1fr)} .grid-2{grid-template-columns: repeat(2,1fr)} }
+    h2{font-size:26px; margin:0 0 18px}
+    .muted{color:var(--muted)}
+    /* ---------- Carousel ---------- */
+    .carousel{position:relative; border-radius: var(--radius); overflow:hidden}
+    .slides{display:flex; transition: transform .6s ease}
+    .slide{min-width:100%; height:320px; background:#0f1530 center/cover no-repeat}
+    .dots{position:absolute; display:flex; gap:8px; left:50%; transform:translateX(-50%); bottom:14px}
+    .dot{width:10px; height:10px; border-radius:50%; border:1px solid rgba(255,255,255,.7); background:rgba(255,255,255,.2); cursor:pointer}
+    .dot.active{background:#fff}
+    /* ---------- Partner chips ---------- */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{
+      padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04); color:#e6eeff; font-size:14px
+    }
+    /* ---------- Footer ---------- */
+    footer{padding:36px 0 60px; color:var(--muted); text-align:center; border-top:1px dashed rgba(255,255,255,.12)}
+    .cols{display:grid; gap:20px}
+    @media(min-width:820px){ .cols{grid-template-columns: 1.1fr .9fr} }
+    .kv{display:flex; align-items:center; gap:14px}
+    .logo{
+      width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow:var(--shadow)
+    }
+    .list{margin:0; padding-left:18px}
+    .list li{margin:6px 0}
   </style>
 </head>
 <body>
-  <header>
-    <h1>NEXTWORLD</h1>
-    <p>化粧品・健康食品 OEM / 国際貿易サービス</p >
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <span class="badge">化粧品・健康食品 OEM / 共同開発・輸出入・物流</span>
+      <h1>NEXTWORLD</h1>
+      <p class="lead">
+        国内外の有力パートナーと共に、ブランドの「企画 → 開発 → 調達 → 製造 → 品質管理 → 輸出入 → 物流」まで
+        ワンストップで支援。スピードと品質で、貴社のビジネスを次のステージへ。
+      </p >
+      <div class="cta">
+        <a class="btn" href=" ">お問い合わせ</a >
+        <a class="btn" href="#partners">主要パートナー</a >
+      </div>
+    </div>
   </header>
 
+  <!-- VISUAL / CAROUSEL -->
   <section>
-    <h2>会社概要</h2>
-    <p>NEXTWORLDは、日本市場向けに化粧品・保健品のOEM/ODM、国際貿易、ITサービスを展開する会社です。</p >
+    <div class="container">
+      <div class="carousel card" id="carousel">
+        <div class="slides" id="slides">
+          <!-- 画像を差し替えてください -->
+          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop');"></div>
+          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop');"></div>
+          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1512207855824-96d34a29a3a1?q=80&w=1600&auto=format&fit=crop');"></div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </section>
 
-    <h2>サービス</h2>
-    <ul style="list-style:none; padding:0;">
-      <li>✅ 化粧品・健康食品 OEM / ODM</li>
-      <li>✅ 国際貿易代行・コンサルティング</li>
-      <li>✅ ITソリューション・EC運営サポート</li>
-    </ul>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container grid grid-3">
+      <div class="card" style="padding:22px">
+        <h2>OEM / ODM</h2>
+        <p class="muted">スキンケア・メイク・ヘアケア・ボディケア・健康食品など幅広いカテゴリに対応。小ロット試作から量産まで柔軟に支援します。</p >
+      </div>
+      <div class="card" style="padding:22px">
+        <h2>商品企画 / 原料探索</h2>
+        <p class="muted">トレンド分析・処方提案・独自原料の探索/手配。ブランドコンセプト設計からパッケージまで一貫サポート。</p >
+      </div>
+      <div class="card" style="padding:22px">
+        <h2>品質管理 / 輸出入・物流</h2>
+        <p class="muted">GMP相当の品質基準、各種試験、薬機法対応。国際物流・越境ECまで含めて最短リードタイムを実現。</p >
+      </div>
+    </div>
+  </section>
 
-    <h2>お問い合わせ</h2>
-    <p>
-      📧 メール: wazenou01@gmail.com<br>
-      📞 電話: 048-299-7663<br>
-      📱 WeChat: qianyelan5721
-    </p >
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="container">
+      <div class="card" style="padding:26px">
+        <h2>主要パートナー</h2>
+        <p class="muted">強固なサプライチェーンと専門性で、安定した開発・量産体制を提供します。</p >
+        <div class="chips" aria-label="partners">
+          <span class="chip">株式会社カネカ</span>
+          <span class="chip">株式会社サンテック産業</span>
+          <span class="chip">ハリウッド株式会社</span>
+          <span class="chip">株式会社オー・デリス・ドゥ・シバタ</span>
+          <span class="chip">株式会社エフケイ・ジャパン</span>
+          <span class="chip">紀州鉄道株式会社</span>
+          <span class="chip">株式会社J Style Beauty</span>
+          <span class="chip">株式会社近鉄エクスプレス</span>
+          <span class="chip">バイホロントレーディング株式会社</span>
+          <span class="chip">前田薬品工業株式会社</span>
+          <span class="chip">大和ハウス工業株式会社</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / HIGHLIGHTS -->
+  <section>
+    <div class="container grid grid-2">
+      <div class="card" style="padding:26px">
+        <h2>私たちの強み</h2>
+        <ul class="list">
+          <li>国内外の優良ファクトリー/原料メーカーとのネットワーク</li>
+          <li>迅速な試作～量産移行（目安：試作1–2週 / 量産4–8週）</li>
+          <li>薬機法・成分表示・容器適合など実務対応</li>
+          <li>越境EC・国際物流・温度管理が必要な配送へも対応</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:26px">
+        <h2>対応カテゴリ</h2>
+        <ul class="list">
+          <li>スキンケア（化粧水・美容液・クリーム・UV など）</li>
+          <li>メイク（下地・ファンデ・リップ・アイメイク）</li>
+          <li>ヘア/ボディ（シャンプー・オイル・クリーム）</li>
+          <li>健康食品（サプリメント・ドリンク・ゼリー）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container card" style="padding:26px">
+      <div class="cols">
+        <div>
+          <div class="kv">
+            <div class="logo" aria-hidden="true"></div>
+            <div>
+              <h2 style="margin:0">お問い合わせ</h2>
+              <div class="muted">ご相談・お見積りは無料です。お気軽にご連絡ください。</div>
+            </div>
+          </div>
+          <p style="margin-top:16px">
+            〒104-0061 東京都中央区銀座2-4-1 銀楽ビル4F<br>
+            TEL：03-6228-7921　FAX：03-6228-7924<br>
+            Email：
+          </p >
+          <p class="muted" style="margin-top:6px">※代表取締役名の掲載は省略しています。</p >
+        </div>
+        <div>
+          <form class="card" style="padding:18px; background:rgba(255,255,255,.03); border-style:dashed" onsubmit="event.preventDefault(); alert('送信ありがとうございました！\n（GitHub Pagesではメール送信のために外部サービス設定が必要です）');">
+            <label>お名前<br><input required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f1530;color:#fff"></label><br><br>
+            <label>メールアドレス<br><input type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f1530;color:#fff"></label><br><br>
+            <label>ご相談内容<br><textarea rows="4" required style="width:100%;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0f1530;color:#fff"></textarea></label><br><br>
+            <button class="btn" style="width:100%">送信する</button>
+            <div class="muted" style="margin-top:8px;font-size:12px">実運用では Formspree / Basin などのフォーム送信サービスをご利用ください。</div>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
-    © 2025 NEXTWORLD. All Rights Reserved.
+    <div class="container">
+      © <span id="y"></span> NEXTWORLD — All Rights Reserved.
+    </div>
   </footer>
+
+  <script>
+    // 年
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // シンプルなカルーセル
+    const slides = document.getElementById('slides');
+    const dotsWrap = document.getElementById('dots');
+    const total = slides.children.length;
+    let idx = 0;
+
+    for(let i=0;i<total;i++){
+      const d=document.createElement('button');
+      d.className='dot' + (i===0?' active':'');
+      d.addEventListener('click',()=>go(i));
+      dotsWrap.appendChild(d);
+    }
+    function go(i){
+      idx=i; slides.style.transform=`translateX(-${i*100}%)`;
+      [...dotsWrap.children].forEach((x,n)=>x.classList.toggle('active', n===i));
+    }
+    setInterval(()=>go((idx+1)%total), 4500);
+  </script>
 </body>
 </html>
